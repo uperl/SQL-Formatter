@@ -1,6 +1,6 @@
-use std::ffi::CString;
-use std::ffi::CStr;
 use sqlformat::format;
+use std::ffi::CStr;
+use std::ffi::CString;
 use std::os::raw::c_char;
 
 #[no_mangle]
@@ -11,7 +11,11 @@ pub fn sf_format(query: *const c_char, indent: u8, uppercase: bool, between: u8)
         uppercase: uppercase,
         lines_between_queries: between,
     };
-    let query = format(query.to_str().unwrap(), &sqlformat::QueryParams::default(), options);
+    let query = format(
+        query.to_str().unwrap(),
+        &sqlformat::QueryParams::default(),
+        options,
+    );
 
     CString::new(query).unwrap().into_raw()
 }
