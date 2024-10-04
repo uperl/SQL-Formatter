@@ -10,6 +10,12 @@ is(
   'does something at least'
 );
 
+is(
+  [$f->format(undef)],
+  [D()],
+  'doing something silly like passing in NULL does not crash'
+);
+
 note @ret;
 
 note $f->format('select foo.a, foo.b, bar.c from foo join bar on foo.a = bar.c where foo.b = 2');

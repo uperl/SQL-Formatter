@@ -74,7 +74,7 @@ Formats whitespace in a SQL string to make it easier to read.
   $ffi->attach( _free => ['opaque'] );
 
   $ffi->attach( format => ['string','u8','bool','u8'] => 'opaque' => sub ($xsub, $self, $sql) {
-    my $ptr = $xsub->($sql, $self->indent, $self->uppercase, $self->lines_between_queries);
+    my $ptr = $xsub->($sql // '', $self->indent, $self->uppercase, $self->lines_between_queries);
     my $str = $ffi->cast( 'opaque' => 'string', $ptr );
     _free($ptr);
     return $str;
