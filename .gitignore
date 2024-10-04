@@ -1,5 +1,6 @@
 SQL-Formatter-*
 /.build/
 *.swp
-
-
+/ffi/target
+/ffi/_build
+/ffi/Cargo.lock
