@@ -1,6 +1,6 @@
 use warnings;
 use 5.020;
-use experimental qw( postderef signatures );
+use experimental qw( signatures );
 
 package SQL::Formatter {
 
